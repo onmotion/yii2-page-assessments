@@ -8,7 +8,6 @@
 /** @var $this \yii\web\View */
 /** @var $assessments string */
 /** @var $actions string */
-/** @var $maxValue string */
 /** @var $fluent string */
 /** @var $messages string */
 /** @var $id string */
@@ -26,7 +25,6 @@ $this->registerJs(<<<JS
 window.$containerId = {};
 window.$containerId.assessments = $assessments;
 window.$containerId.actions = $actions;
-window.$containerId.maxValue = $maxValue;
 window.$containerId.fluent = $fluent;
 window.$containerId.messages = $messages;
 window.assessmentContainerId = $id;

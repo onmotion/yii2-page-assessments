@@ -23,7 +23,6 @@ class AssessmentWidget extends Widget
 {
 
     public $model;
-    public $maxValue = 5;
     public $questions;
     public $fluent = false;
     public $actions = [
@@ -97,6 +96,7 @@ class AssessmentWidget extends Widget
                 'assessment_user_ip' => \Yii::$app->request->userIP ?? null,
                 'assessment_question' => $assessmentQuestion['title'],
                 'assessment_url' => \Yii::$app->request->pathInfo ?: '/',
+                'maxValue' => ArrayHelper::getValue($assessmentQuestion, 'maxValue', 5)
             ]);
             if ($assessmentQuestion['allowComment']) {
                 $assessment->assessment_comment = '';
@@ -112,7 +112,6 @@ class AssessmentWidget extends Widget
 
         $assessments = json_encode($assessments);
         $actions = json_encode($this->actions);
-        $maxValue = json_encode($this->maxValue);
         $fluent = json_encode($this->fluent);
         $messages = json_encode([
             'commentPrompt' => \Yii::t('assessments', 'You can leave a comment...'),
@@ -121,7 +120,7 @@ class AssessmentWidget extends Widget
         $id = json_encode($this->getId());
 
         echo $this->render('index', ['assessments' => $assessments, 'actions' => $actions,
-            'maxValue' => $maxValue, 'fluent' => $fluent, 'messages' => $messages, 'id' => $id]);
+             'fluent' => $fluent, 'messages' => $messages, 'id' => $id]);
     }
 
 

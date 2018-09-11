@@ -70,13 +70,11 @@
         data: function () {
             let containerId = window.assessmentContainerId;
             let assessments = window[containerId];
-            let maxValue = assessments.maxValue || 5;
-            let stars = Array(maxValue).fill().map(u => ({show: true}));
+
             return {
                 currentAssessmentNumber: 0,
                 assessments: assessments.assessments,
                 actions: assessments.actions,
-                stars: stars,
                 inProgress: false,
                 isFluent: assessments.fluent || false,
                 messages: assessments.messages,
@@ -171,6 +169,11 @@
             },
             showNotifyBlock() {
                 return this.notification.text && this.notification.text.length > 0;
+            },
+            stars() {
+                console.log(this.currentAssessment);
+                let maxValue = this.currentAssessment.maxValue || 5;
+                return Array(maxValue).fill().map(u => ({show: true}));
             }
         },
         components: {}
