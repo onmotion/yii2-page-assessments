@@ -25,8 +25,7 @@ class AssessmentWidgetAsset extends \yii\web\AssetBundle
     ];
     public $depends = [
         'yii\web\YiiAsset',
-//        'frontend\assets\VueAsset',
-//        'frontend\assets\VueResourceAsset',
-//        'frontend\assets\VueInfiniteLoadingAsset'
+        'onmotion\vue\VueAsset',
+        'onmotion\vue\VueResourceAsset',
     ];
 }

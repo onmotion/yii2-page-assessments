@@ -29,6 +29,7 @@ class AssessmentWidget extends Widget
     public $actions = [
         'save' => null,
     ];
+    public $id = 'page-assessment';
 
     public function init()
     {
@@ -79,7 +80,7 @@ class AssessmentWidget extends Widget
 
         AssessmentWidgetAsset::register($this->getView());
 
-        $answeredQuestions = Assessment::getAnsweredQuestionsForUser(ArrayHelper::getColumn($this->questions, 'title'), \Yii::$app->request->pathInfo);
+        $answeredQuestions = Assessment::getAnsweredQuestionsForUser(ArrayHelper::getColumn($this->questions, 'title'), (\Yii::$app->request->pathInfo ?: '/'));
 
         $this->questions = array_filter($this->questions, function ($item) use ($answeredQuestions) {
             return !in_array($item['title'], $answeredQuestions);
@@ -95,7 +96,7 @@ class AssessmentWidget extends Widget
                 'assessment_user_id' => \Yii::$app->getUser()->getId() ?? null,
                 'assessment_user_ip' => \Yii::$app->request->userIP ?? null,
                 'assessment_question' => $assessmentQuestion['title'],
-                'assessment_url' => \Yii::$app->request->pathInfo,
+                'assessment_url' => \Yii::$app->request->pathInfo ?: '/',
             ]);
             if ($assessmentQuestion['allowComment']) {
                 $assessment->assessment_comment = '';
@@ -114,10 +115,14 @@ class AssessmentWidget extends Widget
         $maxValue = json_encode($this->maxValue);
         $fluent = json_encode($this->fluent);
         $messages = json_encode([
-            'comment' => \Yii::t('assessments', 'You can leave a comment...')
+            'commentPrompt' => \Yii::t('assessments', 'You can leave a comment...'),
+            'successMessage' => \Yii::t('assessments', 'Thank you for your vote!')
         ]);
+        $id = json_encode($this->getId());
 
-        echo $this->render('index', ['assessments' => $assessments, 'actions' => $actions, 'maxValue' => $maxValue, 'fluent' => $fluent, 'messages' => $messages]);
+        echo $this->render('index', ['assessments' => $assessments, 'actions' => $actions,
+            'maxValue' => $maxValue, 'fluent' => $fluent, 'messages' => $messages, 'id' => $id]);
     }
+
 
 }

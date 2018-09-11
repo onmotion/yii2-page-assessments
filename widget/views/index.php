@@ -11,21 +11,31 @@
 /** @var $maxValue string */
 /** @var $fluent string */
 /** @var $messages string */
+/** @var $id string */
+
 
 ?>
 
-    <div id="page-assessment" class="page-assessment-container <?= $fluent == 'true' ? 'fluent' : '' ?>" >
+    <div id="<?= json_decode($id) ?>" class="page-assessment-container <?= $fluent == 'true' ? 'fluent' : '' ?>" >
         <page-assessment></page-assessment>
     </div>
 
 <?php
-
+$containerId = json_decode($id);
 $this->registerJs(<<<JS
-window.assessments = {};
-window.assessments.assessments = $assessments;
-window.assessments.actions = $actions;
-window.assessments.maxValue = $maxValue;
-window.assessments.fluent = $fluent;
-window.assessments.messages = $messages;
+window.$containerId = {};
+window.$containerId.assessments = $assessments;
+window.$containerId.actions = $actions;
+window.$containerId.maxValue = $maxValue;
+window.$containerId.fluent = $fluent;
+window.$containerId.messages = $messages;
+window.assessmentContainerId = $id;
+
+new Vue({
+  el: '#' + window.assessmentContainerId,
+ // render: h => h(App)
+});
+
 JS
-    , $this::POS_BEGIN);
+    );
+

@@ -8,5 +8,6 @@
  */
 
 return [
-    'You can leave a comment...' => 'Вы можете оставить комментарий...'
+    'You can leave a comment...' => 'Вы можете оставить комментарий...',
+    'Thank you for your vote!' => 'Спасибо за Ваш голос!',
 ];
