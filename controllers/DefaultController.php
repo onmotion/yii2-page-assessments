@@ -3,11 +3,8 @@
 namespace common\modules\assessments\controllers;
 
 use common\modules\assessments\models\Assessment;
-use common\modules\assessments\models\AssessmentQuestion;
 use yii\base\UserException;
 use yii\web\Controller;
-use yii\web\ForbiddenHttpException;
-use yii\web\NotFoundHttpException;
 use yii\web\Response;
 
 /**
