@@ -134,7 +134,7 @@
                         that.currentAssessmentNumber = -1;
                         Vue.set(that.notification, 'text', null);
                         that.inProgress = false;
-                    }, 3000);
+                    }, 2000);
                 } else {
                     setTimeout(function () {
                         ++that.currentAssessmentNumber;
@@ -171,7 +171,6 @@
                 return this.notification.text && this.notification.text.length > 0;
             },
             stars() {
-                console.log(this.currentAssessment);
                 let maxValue = this.currentAssessment.maxValue || 5;
                 return Array(maxValue).fill().map(u => ({show: true}));
             }
@@ -220,22 +219,7 @@
         }
     }
 
-    .close-button {
-        position: absolute;
-        right: 8px;
-        top: 6px;
-        z-index: 1;
-        img {
-            width: 20px;
-            opacity: .5;
-            transition: opacity .3s;
-        }
-        &:hover {
-            img {
-                opacity: 1;
-            }
-        }
-    }
+
 
     .assessment-container {
         overflow: hidden;
@@ -260,6 +244,7 @@
         }
         &:hover {
             color: #f79646;
+            cursor: pointer;
         }
     }
 
@@ -311,6 +296,22 @@
         }
         img{
             width: 9px;
+        }
+    }
+    .close-button {
+        position: absolute;
+        right: 8px;
+        top: 6px;
+        z-index: 1;
+        img {
+            width: 15px;
+            opacity: .5;
+            transition: opacity .3s;
+        }
+        &:hover {
+            img {
+                opacity: 1;
+            }
         }
     }
 

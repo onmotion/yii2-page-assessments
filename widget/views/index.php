@@ -11,6 +11,7 @@
 /** @var $fluent string */
 /** @var $messages string */
 /** @var $id string */
+/** @var $timeout integer */
 
 
 ?>
@@ -29,10 +30,12 @@ window.$containerId.fluent = $fluent;
 window.$containerId.messages = $messages;
 window.assessmentContainerId = $id;
 
-new Vue({
-  el: '#' + window.assessmentContainerId,
- // render: h => h(App)
+setTimeout(function(e) {
+  new Vue({
+  el: '#' + $id,
 });
+}, $timeout);
+
 
 JS
     );

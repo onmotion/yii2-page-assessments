@@ -29,6 +29,7 @@ class AssessmentWidget extends Widget
         'save' => null,
     ];
     public $id = 'page-assessment';
+    public $timeout = 1500;
 
     public function init()
     {
@@ -120,7 +121,7 @@ class AssessmentWidget extends Widget
         $id = json_encode($this->getId());
 
         echo $this->render('index', ['assessments' => $assessments, 'actions' => $actions,
-             'fluent' => $fluent, 'messages' => $messages, 'id' => $id]);
+             'fluent' => $fluent, 'messages' => $messages, 'id' => $id, 'timeout' => $this->timeout]);
     }
 
 
