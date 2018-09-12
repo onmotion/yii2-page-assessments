@@ -6,9 +6,9 @@
  * Time: 14:23
  */
 
-namespace common\modules\assessments\widget;
+namespace onmotion\assessments\widget;
 
-use common\modules\assessments\models\Assessment;
+use onmotion\assessments\models\Assessment;
 use yii\base\InvalidConfigException;
 use yii\base\Widget;
 use yii\db\ActiveRecord;

@@ -6,7 +6,7 @@
  * Time: 14:26
  */
 
-namespace common\modules\assessments\widget;
+namespace onmotion\assessments\widget;
 
 class AssessmentWidgetAsset extends \yii\web\AssetBundle
 {

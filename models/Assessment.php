@@ -1,6 +1,6 @@
 <?php
 
-namespace common\modules\assessments\models;
+namespace onmotion\assessments\models;
 
 use Yii;
 use yii\base\Model;

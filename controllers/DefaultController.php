@@ -1,8 +1,8 @@
 <?php
 
-namespace common\modules\assessments\controllers;
+namespace onmotion\assessments\controllers;
 
-use common\modules\assessments\models\Assessment;
+use onmotion\assessments\models\Assessment;
 use yii\base\UserException;
 use yii\web\Controller;
 use yii\web\Response;
