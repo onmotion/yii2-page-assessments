@@ -1,10 +1,8 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: kozhevnikov
- * Date: 07/09/2018
- * Time: 17:28
- * translations
+ * @copyright Copyright (c) 2018
+ * @author Alexandr Kozhevnikov <onmotion1@gmail.com>
+ * @package yii2-page-assessments
  */
 
 return [

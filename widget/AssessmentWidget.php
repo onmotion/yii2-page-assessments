@@ -1,9 +1,8 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: kozhevnikov
- * Date: 02/07/2018
- * Time: 14:23
+ * @copyright Copyright (c) 2018
+ * @author Alexandr Kozhevnikov <onmotion1@gmail.com>
+ * @package yii2-page-assessments
  */
 
 namespace onmotion\assessments\widget;

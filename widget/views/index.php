@@ -1,10 +1,10 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: kozhevnikov
- * Date: 02/07/2018
- * Time: 14:33
+ * @copyright Copyright (c) 2018
+ * @author Alexandr Kozhevnikov <onmotion1@gmail.com>
+ * @package yii2-page-assessments
  */
+
 /** @var $this \yii\web\View */
 /** @var $assessments string */
 /** @var $actions string */
@@ -29,6 +29,8 @@ window.$containerId.actions = $actions;
 window.$containerId.fluent = $fluent;
 window.$containerId.messages = $messages;
 window.assessmentContainerId = $id;
+
+Vue.http.options.emulateJSON = true; // application/x-www-form-urlencoded
 
 setTimeout(function(e) {
   new Vue({
