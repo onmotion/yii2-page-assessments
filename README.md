@@ -14,11 +14,11 @@ Installation
 
 Just run:
 
-composer require onmotion/yii2-page-assessments
+    composer require onmotion/yii2-page-assessments
 
 or add 
 
-"onmotion/yii2-page-assessments": "*"
+    "onmotion/yii2-page-assessments": "*"
 
 to the require section of your composer.json file.
 
@@ -29,11 +29,11 @@ You must add to your config:
 
 ```php
 'modules' => [
-//...
-'assessments' => [
-'class' => 'onmotion\assessments\Module',
-],
-//...
+    //...
+    'assessments' => [
+        'class' => 'onmotion\assessments\Module',
+    ],
+    //...
 ],
 ```
 
@@ -43,15 +43,15 @@ Then you can use the widget somewhere on the page:
 
 ```php
 echo \onmotion\assessments\widget\AssessmentWidget::widget([
-'fluent' => false, // static or fluent view
-'questions' => [
-'Is this page helpful?', // simple question
-[
-'title' => 'What do you think about it?',
-'maxValue' => 6, 
-'allowComment' => true // allow optional comment
-]
-]
+    'fluent' => false, // static or fluent view
+    'questions' => [
+        'Is this page helpful?', // simple question
+        [
+            'title' => 'What do you think about it?',
+            'maxValue' => 6, 
+            'allowComment' => true // allow optional comment
+        ]
+    ]
 ]);
 ```
 Options
