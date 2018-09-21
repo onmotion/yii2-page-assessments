@@ -7,7 +7,7 @@
 
 return [
     'You can leave a comment...' => 'Вы можете оставить комментарий...',
-    'Thank you for your vote!' => 'Спасибо за Ваш голос!',
+    'Thanks for the feedback!' => 'Спасибо за Ваш отзыв!',
     'Send' => 'Отправить',
     'Skip' => 'Пропустить',
 ];
