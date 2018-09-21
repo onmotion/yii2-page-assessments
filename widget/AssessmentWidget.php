@@ -115,7 +115,9 @@ class AssessmentWidget extends Widget
         $fluent = json_encode($this->fluent);
         $messages = json_encode([
             'commentPrompt' => \Yii::t('assessments', 'You can leave a comment...'),
-            'successMessage' => \Yii::t('assessments', 'Thank you for your vote!')
+            'successMessage' => \Yii::t('assessments', 'Thank you for your vote!'),
+            'send' => \Yii::t('assessments', 'Send'),
+            'skip' => \Yii::t('assessments', 'Skip'),
         ]);
         $id = json_encode($this->getId());
 

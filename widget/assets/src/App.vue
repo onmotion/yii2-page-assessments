@@ -41,12 +41,12 @@
                                             v-if="currentAssessment.assessment_comment && currentAssessment.assessment_comment.length > 0"
                                             @click="sendRequest"
                                             :disabled="inProgress">
-                                        Отправить <img
+                                        {{messages.send || 'send'}} <img
                                             src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCIgdmlld0JveD0iMCAwIDQ1MS44NDYgNDUxLjg0NyIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNDUxLjg0NiA0NTEuODQ3OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnPgoJPHBhdGggZD0iTTM0NS40NDEsMjQ4LjI5MkwxNTEuMTU0LDQ0Mi41NzNjLTEyLjM1OSwxMi4zNjUtMzIuMzk3LDEyLjM2NS00NC43NSwwYy0xMi4zNTQtMTIuMzU0LTEyLjM1NC0zMi4zOTEsMC00NC43NDQgICBMMjc4LjMxOCwyMjUuOTJMMTA2LjQwOSw1NC4wMTdjLTEyLjM1NC0xMi4zNTktMTIuMzU0LTMyLjM5NCwwLTQ0Ljc0OGMxMi4zNTQtMTIuMzU5LDMyLjM5MS0xMi4zNTksNDQuNzUsMGwxOTQuMjg3LDE5NC4yODQgICBjNi4xNzcsNi4xOCw5LjI2MiwxNC4yNzEsOS4yNjIsMjIuMzY2QzM1NC43MDgsMjM0LjAxOCwzNTEuNjE3LDI0Mi4xMTUsMzQ1LjQ0MSwyNDguMjkyeiIgZmlsbD0iIzYwN2Q4YiIvPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo="/>
                                     </button>
                                     <button v-else class="button button-skip" @click="nextQuestion"
                                             :disabled="inProgress">
-                                        Пропустить <img
+                                        {{messages.skip || 'skip'}} <img
                                             src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCIgdmlld0JveD0iMCAwIDQ1MS44NDYgNDUxLjg0NyIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNDUxLjg0NiA0NTEuODQ3OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnPgoJPHBhdGggZD0iTTM0NS40NDEsMjQ4LjI5MkwxNTEuMTU0LDQ0Mi41NzNjLTEyLjM1OSwxMi4zNjUtMzIuMzk3LDEyLjM2NS00NC43NSwwYy0xMi4zNTQtMTIuMzU0LTEyLjM1NC0zMi4zOTEsMC00NC43NDQgICBMMjc4LjMxOCwyMjUuOTJMMTA2LjQwOSw1NC4wMTdjLTEyLjM1NC0xMi4zNTktMTIuMzU0LTMyLjM5NCwwLTQ0Ljc0OGMxMi4zNTQtMTIuMzU5LDMyLjM5MS0xMi4zNTksNDQuNzUsMGwxOTQuMjg3LDE5NC4yODQgICBjNi4xNzcsNi4xOCw5LjI2MiwxNC4yNzEsOS4yNjIsMjIuMzY2QzM1NC43MDgsMjM0LjAxOCwzNTEuNjE3LDI0Mi4xMTUsMzQ1LjQ0MSwyNDguMjkyeiIgZmlsbD0iIzYwN2Q4YiIvPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo="/>
                                     </button>
                                 </div>
@@ -206,7 +206,7 @@
             border-radius: 5px;
             max-width: calc(100vw - 20px);
             min-width: 270px;
-            background: rgba(0, 0, 0, 0.9);
+            background: #102027;
 
         }
         & > div {
@@ -225,10 +225,16 @@
         display: inline-block;
         color: #c3c3c3;
         letter-spacing: 7px;
-
+        height: 30px;
+        max-width: 30px;
+        flex: 0 1 auto;
+        margin-right: 7px;
+        &:last-child{
+            margin-right: 0;
+        }
         svg {
-            width: 30px;
-            height: 30px;
+            width: 100%;
+            height: inherit;
         }
         use {
             transition: fill .3s;
@@ -236,12 +242,12 @@
         }
         &.voted {
             use {
-                fill: #f79646;
+                fill: #ffeb3b;
             }
         }
         &:hover {
             use {
-                fill: #f79646;
+                fill: #ffeb3b;
             }
             cursor: pointer;
         }
@@ -249,9 +255,10 @@
 
     .assessment__values {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         width: 177px;
         margin: auto;
+        flex-wrap: nowrap;
     }
 
     .fluent {
@@ -305,7 +312,7 @@
             background: #E8E8E8;
             outline: none;
             &:focus {
-                border-bottom: 2px solid #f79646;
+                border-bottom: 2px solid #ffeb3b;
             }
         }
     }
@@ -352,10 +359,10 @@
     .notify-block {
         span {
             &.error {
-                color: #d50000;
+                color: #d84315;
             }
             &.success {
-                color: #64dd17;
+                color: #4db6ac;
             }
         }
     }
