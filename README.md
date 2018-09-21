@@ -22,6 +22,10 @@ or add
 
 to the require section of your composer.json file.
 
+apply migration:
+
+    php yii migrate --migrationPath=@vendor/onmotion/yii2-page-assessments/migrations
+
 Usage
 --
 
