@@ -24,16 +24,16 @@ class m180912_132910_create_table_assessment extends Migration
             'assessment_comment' => $this->string(),
             'assessment_user_id' => $this->integer(),
             'assessment_created_at' => $this->timestamp()->defaultExpression('CURRENT_TIMESTAMP'),
-            'assessment_updated_at' => $this->timestamp(),
+            'assessment_updated_at' => $this->timestamp()->null(),
             'assessment_user_ip' => $this->string(15),
             'assessment_url' => $this->string(),
             'assessment_question' => $this->string(),
             'assessment_is_declined' => $this->boolean()->defaultValue('0'),
         ], $tableOptions);
 
-        $this->createIndex('idx_search2', '{{%assessment}}', ['assessment_question', 'assessment_url', 'assessment_user_ip']);
         $this->createIndex('idx_url', '{{%assessment}}', 'assessment_url');
         $this->createIndex('idx_search', '{{%assessment}}', ['assessment_question', 'assessment_url', 'assessment_user_id']);
+        $this->createIndex('idx_search2', '{{%assessment}}', ['assessment_question', 'assessment_url', 'assessment_user_ip']);
     }
 
     public function down()
