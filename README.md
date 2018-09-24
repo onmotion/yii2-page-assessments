@@ -1,5 +1,5 @@
-# yii2-page-assessments
-The page assessment module for Yii2 framework
+# Yii2 page assessment extension
+The page assessment module for Yii2 framework based on Vue2.
 
 *Fluent view:*
 
@@ -75,6 +75,6 @@ Events
 
 ```javascript
 document.addEventListener('assessment.show', function (e) {
-console.log(e.detail);
+    console.log(e.detail);
 }, false);
 ```
