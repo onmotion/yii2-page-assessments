@@ -66,3 +66,15 @@ Options
 | **fluent**     | bool     | false    | fluent or static view  |
 | **questions**   | string \|\| array   | see example | 
 | **model** _(optional)_   | ActiveRecord   | null | Attach `Model::class` info with primary key  |
+
+
+Events
+--
+
+**assessment.show** - when an assessment item appears.
+
+```javascript
+document.addEventListener('assessment.show', function (e) {
+console.log(e.detail);
+}, false);
+```
