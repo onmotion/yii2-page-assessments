@@ -152,6 +152,7 @@
                     setTimeout(function () {
                         ++that.currentAssessmentNumber;
                         that.inProgress = false;
+                        that.broadcastShowEvent();
                     }, 400);
                 }
 
@@ -166,7 +167,12 @@
                 this.$nextTick(function () {
                     this.currentAssessmentNumber = -1;
                 });
-
+            },
+            broadcastShowEvent(){
+                if (this.currentAssessment) {
+                    let event = new CustomEvent('assessment.show', {'detail': this.currentAssessment});
+                    document.dispatchEvent(event);
+                }
             },
         },
         computed: {
@@ -188,7 +194,10 @@
                 return Array(maxValue).fill().map(u => ({show: true}));
             }
         },
-        components: {}
+
+        mounted: function () {
+            this.broadcastShowEvent();
+        }
     }
 </script>
 
@@ -229,7 +238,7 @@
         max-width: 30px;
         flex: 0 1 auto;
         margin-right: 7px;
-        &:last-child{
+        &:last-child {
             margin-right: 0;
         }
         svg {

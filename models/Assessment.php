@@ -51,6 +51,7 @@ class Assessment extends \yii\db\ActiveRecord
     {
         return [
             [['assessment_url'], 'required'],
+            [['assessment_is_declined'], 'filter', 'filter' => 'boolval'],
             [['assessment_is_declined'], 'boolean'],
             [['assessment_object_id', 'assessment_value', 'assessment_user_id'], 'integer'],
             [['assessment_created_at', 'assessment_updated_at'], 'safe'],
