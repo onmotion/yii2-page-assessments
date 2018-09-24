@@ -170,7 +170,7 @@
             },
             broadcastShowEvent(){
                 if (this.currentAssessment) {
-                    let event = new CustomEvent('assessment.show', {'detail': this.currentAssessment});
+                    let event = new CustomEvent('assessment.show', {'detail': Object.assign({}, this.currentAssessment) });
                     document.dispatchEvent(event);
                 }
             },
