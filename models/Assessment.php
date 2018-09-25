@@ -61,7 +61,7 @@ class Assessment extends \yii\db\ActiveRecord
             [['assessment_user_ip'], 'string', 'max' => 15],
             [['assessment_comment'], 'filter', 'filter' => function($val){
                 return HtmlPurifier::process($val);
-            }],
+            }, 'skipOnEmpty' => true],
         ];
     }
 
