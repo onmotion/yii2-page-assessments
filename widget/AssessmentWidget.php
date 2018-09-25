@@ -102,12 +102,12 @@ class AssessmentWidget extends Widget
                 $assessment->assessment_comment = '';
             }
 
-            if ($this->model instanceof ActiveRecord) {
+            if (isset($this->model) && $this->model instanceof ActiveRecord) {
                 $assessment->assessment_object_class = get_class($this->model);
                 $assessment->assessment_object_id = $this->model->primaryKey ?? null;
             }
 
-            if ($assessmentQuestion['model'] instanceof ActiveRecord) {
+            if (isset($assessmentQuestion['model']) && $assessmentQuestion['model'] instanceof ActiveRecord) {
                 $model = $assessmentQuestion['model'];
                 $assessment->assessment_object_class = get_class($model);
                 $assessment->assessment_object_id = $model->primaryKey ?? null;
