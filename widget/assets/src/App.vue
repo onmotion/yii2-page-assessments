@@ -125,10 +125,9 @@
                     if (typeof response.data === 'number') {
                         if (!this.currentAssessment) return null;
                         Vue.set(this.currentAssessment, 'assessment_id', response.data);
+                        this.inProgress = false;
                         if (!this.showCommentBlock || this.currentAssessment.assessment_comment.length > 0) {
                             this.nextQuestion();
-                        } else {
-                            this.inProgress = false;
                         }
                     }
                 }, function (error) {
@@ -183,8 +182,11 @@
                 return this.assessments[this.currentAssessmentNumber] || false;
             },
             showCommentBlock() {
-                return this.currentAssessment.hasOwnProperty('assessment_comment') &&
-                    this.currentAssessment.hasOwnProperty('assessment_id');
+                let allowComment = this.currentAssessment.allowComment;
+                return this.currentAssessment.hasOwnProperty('assessment_value') && (
+                    Array.isArray(allowComment)
+                    ? (allowComment.indexOf(this.currentAssessment.assessment_value) !== -1)
+                    : (allowComment === true));
             },
             showNotifyBlock() {
                 return this.notification.text && this.notification.text.length > 0;

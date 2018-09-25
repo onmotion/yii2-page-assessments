@@ -96,11 +96,11 @@ class AssessmentWidget extends Widget
                 'assessment_user_ip' => \Yii::$app->request->userIP ?? null,
                 'assessment_question' => $assessmentQuestion['title'],
                 'assessment_url' => \Yii::$app->request->pathInfo ?: '/',
+                'assessment_comment' => '',
                 'maxValue' => ArrayHelper::getValue($assessmentQuestion, 'maxValue', 5)
             ]);
-            if ($assessmentQuestion['allowComment']) {
-                $assessment->assessment_comment = '';
-            }
+
+            $assessment->allowComment = $assessmentQuestion['allowComment'];
 
             if (isset($this->model) && $this->model instanceof ActiveRecord) {
                 $assessment->assessment_object_class = get_class($this->model);
