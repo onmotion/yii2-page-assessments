@@ -58,7 +58,8 @@ echo \onmotion\assessments\widget\AssessmentWidget::widget([
         [
             'title' => 'What do you think about it?',
             'maxValue' => 6, 
-            'allowComment' => true // allow optional comment
+          //  'allowComment' => true // allow optional comment
+            'allowComment' => [1, 2, 3] // allow comment only if value is 1, 2 or 3.
         ]
     ]
 ]);
