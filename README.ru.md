@@ -1,42 +1,42 @@
-# Yii2 page assessment/rating extension
-The page assessment module for Yii2 framework based on Vue2.
+# Модуль оценки/голосования для Yii2
+Модуль оценки страницы/голосования для Yii2 основанный на Vue2.
 
-Language: [English](README.md), [Русский](README.ru.md)
+Язык: [English](README.md), [Русский](README.ru.md)
 
 [![Latest Stable Version](https://poser.pugx.org/onmotion/yii2-page-assessments/v/stable)](https://packagist.org/packages/onmotion/yii2-page-assessments)
 [![Total Downloads](https://poser.pugx.org/onmotion/yii2-page-assessments/downloads)](https://packagist.org/packages/onmotion/yii2-page-assessments)
 [![Monthly Downloads](https://poser.pugx.org/onmotion/yii2-page-assessments/d/monthly)](https://packagist.org/packages/onmotion/yii2-page-assessments)
 [![License](https://poser.pugx.org/onmotion/yii2-page-assessments/license)](https://packagist.org/packages/onmotion/yii2-page-assessments)
 
-*Fluent view:*
+*Всплывающий:*
 
 ![fluent](https://github.com/onmotion/yii2-page-assessments/blob/docs/docs/fluent.gif?raw=true)
 
-*Static (embeded in a page) view:*
+*Статичный (встроенный в страницу):*
 
 ![fluent](https://github.com/onmotion/yii2-page-assessments/blob/docs/docs/static.gif?raw=true)
 
 Installation
 --
 
-Just run:
+Выполните:
 
     composer require onmotion/yii2-page-assessments
 
-or add 
+или добавьте 
 
     "onmotion/yii2-page-assessments": "*"
 
-to the require section of your composer.json file.
+в ваш composer.json файл.
 
-apply migration:
+Примените миграцию:
 
     php yii migrate --migrationPath=@vendor/onmotion/yii2-page-assessments/migrations
 
-Usage
+Использование
 --
 
-You must add to your config:
+Необходимо добавить в конфиг приложения:
 
 ```php
 'modules' => [
@@ -48,9 +48,9 @@ You must add to your config:
 ],
 ```
 
-Then you can use the widget somewhere on the page:
+Теперь можно использовать виджет на странице:
 
-*Example:*
+*Пример:*
 
 ```php
 echo \onmotion\assessments\widget\AssessmentWidget::widget([
@@ -67,7 +67,7 @@ echo \onmotion\assessments\widget\AssessmentWidget::widget([
     ]
 ]);
 ```
-Options
+Опции
 --
 
 | option     | type | default  | description |
@@ -77,10 +77,10 @@ Options
 | **model** _(optional)_   | ActiveRecord   | null | Attach `Model::class` info with primary key  |
 
 
-Events
+События
 --
 
-**assessment.show** - when an assessment item appears.
+**assessment.show** - когда вопрос отобразился.
 
 ```javascript
 document.addEventListener('assessment.show', function (e) {
