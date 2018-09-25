@@ -10,6 +10,7 @@ namespace onmotion\assessments\models;
 use Yii;
 use yii\base\Model;
 use yii\helpers\ArrayHelper;
+use yii\helpers\HtmlPurifier;
 use yii\helpers\Url;
 
 /**
@@ -58,6 +59,9 @@ class Assessment extends \yii\db\ActiveRecord
             [['assessment_value', 'assessment_comment'], 'default', 'value' => null],
             [['assessment_comment', 'assessment_question', 'assessment_url', 'assessment_object_class'], 'string', 'max' => 255],
             [['assessment_user_ip'], 'string', 'max' => 15],
+            [['assessment_comment'], 'filter', 'filter' => function($val){
+                return HtmlPurifier::process($val);
+            }],
         ];
     }
 

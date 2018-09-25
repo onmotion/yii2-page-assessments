@@ -34,7 +34,7 @@ class DefaultController extends Controller
                     $model = $existingModel;
                 }
             }
-            return $model->save(false) ? $model->assessment_id : false;
+            return $model->save() ? $model->assessment_id : false;
 
         }else{
             throw new UserException(current((array)$model->getFirstErrors()));
