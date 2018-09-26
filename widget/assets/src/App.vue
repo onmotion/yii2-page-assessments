@@ -1,5 +1,5 @@
 <template>
-    <div class="vue-component-root">
+    <div class="vue-component-root" :class="{hidden: containerHidden}">
         <div class="assessment-container">
             <button class="button close-button" v-if="isFluent" @click="close">
                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAH6SURBVGhD7Zk7TgMxFEXTgEQPNIg1QMdCIFW2wg5o2Af/jmXw7RBrYAEow7F5N0yUmWhixh4n8pEsT17s+96RSFIwKhQKhc1iOp2esE7tZVKqqtqm9zlrx0phOAnCvti/2cdWToJJPLBX7I/BMpJwQY6UMvSZSYhgGS6d2fAz7HVUGfIXJBzU3tl27dhqcHGcUobcVgnWvh0Lg5wkMuTFkxDkRZUhJ76EIDeKDPfTSQjye5XhXnoJQZ9eZDg/nISg379kODe8hKBvkAzv5yMh6L+SDPX8JARzdJLhdb4SgnmWyrDnLyGYq1GGNWGth4RgvgWZJrKWEMy5VGYtJASDTmzuOah/ro0E8zZ+sB3UZ18AWcOQrRIiexmGcxL3ftoa1Nyf08K3GVt+MgzlJO78lDWo+Q82j51+NAeFYdok3pyEHXPn8pVhiE4Sgrfyk6G5k7j109RokxAcyUeGpk7ixk9RwyT27FgrHB1ehmZtEq9dJARXhpOhSS8SgqvpZQh3Ete+Ww1qLyESgoh0MoRuxZAQRMWXISyqhCAyngwhTuLKp9ag9tynhCC6fxkuJ5UQtOhXhsuXvzF/UHuKKSFo1SjDOrIj3eHSIevDcpJJCFrOyfB8YW+tDpe9DCuphGB+L8MKlxCEHBAY9p+iHqD3sT0WCoXCxjAa/QDuHENY6TckiAAAAABJRU5ErkJggg==">
@@ -7,6 +7,7 @@
             <transition name="fade"
                         enter-active-class="fadeInRight"
                         leave-active-class="fadeOutLeft"
+                        @after-leave="afterLeave"
                         mode="out-in"
                         appear
             >
@@ -16,7 +17,8 @@
                         <h3 class="title">{{currentAssessment.assessment_question}}</h3>
                         <div>
                             <transition-group name="star" class="assessment__values" tag="div">
-                                <i class="i-star" :class="{voted: currentAssessment.assessment_value >= (i + 1), selected: currentAssessment.assessment_value === (i + 1)}"
+                                <i class="i-star"
+                                   :class="{voted: currentAssessment.assessment_value >= (i + 1), selected: currentAssessment.assessment_value === (i + 1)}"
                                    v-show="star.show" aria-hidden="true" v-for="(star, i) in stars" :key="i"
                                    @click="voteClicked(star, i)">
                                     <span v-if="icons[(i+1)] !== undefined" v-html="icons[(i+1)]"></span>
@@ -97,6 +99,7 @@
                     text: null,
                 },
                 visible: true,
+                containerHidden: false,
                 icons: assessments.icons || []
             }
         },
@@ -167,12 +170,18 @@
                 this.sendRequest();
                 this.$nextTick(function () {
                     this.currentAssessmentNumber = -1;
+                    this.containerHidden = true;
                 });
             },
-            broadcastShowEvent(){
+            broadcastShowEvent() {
                 if (this.currentAssessment) {
-                    let event = new CustomEvent('assessment.show', {'detail': Object.assign({}, this.currentAssessment) });
+                    let event = new CustomEvent('assessment.show', {'detail': Object.assign({}, this.currentAssessment)});
                     document.dispatchEvent(event);
+                }
+            },
+            afterLeave: function (el) {
+                if (this.currentAssessment === false) {
+                    this.containerHidden = true;
                 }
             },
         },
@@ -187,8 +196,8 @@
                 let allowComment = this.currentAssessment.allowComment;
                 return this.currentAssessment.hasOwnProperty('assessment_value') && (
                     Array.isArray(allowComment)
-                    ? (allowComment.indexOf(this.currentAssessment.assessment_value) !== -1)
-                    : (allowComment === true));
+                        ? (allowComment.indexOf(this.currentAssessment.assessment_value) !== -1)
+                        : (allowComment === true));
             },
             showNotifyBlock() {
                 return this.notification.text && this.notification.text.length > 0;
@@ -234,6 +243,11 @@
         fill: inherit;
     }
 
+    .hidden {
+        display: none;
+        visibility: hidden;
+    }
+
     .i-star {
         display: inline-block;
         color: #c3c3c3;
@@ -243,7 +257,7 @@
         flex: 1 1 auto;
         margin-right: 7px;
         transition: color .3s;
-        span{
+        span {
             height: inherit;
         }
         &:last-child {
