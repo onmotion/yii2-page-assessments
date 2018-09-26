@@ -55,6 +55,7 @@ Installation
 ```php
 echo \onmotion\assessments\widget\AssessmentWidget::widget([
     'fluent' => false, // static or fluent view
+   // 'timeout' => 1500 // timeout bafore appearance.
     'questions' => [
         'Is this page helpful?', // simple question
         [
@@ -74,7 +75,9 @@ echo \onmotion\assessments\widget\AssessmentWidget::widget([
 | --------   | --------  | --------  | --------  |
 | **fluent**     | bool     | false    | fluent or static view  |
 | **questions**   | string \|\| array   | see example | 
+| **timeout** | integer | 1500 | timeout bafore appearance |
 | **model** _(optional)_   | ActiveRecord   | null | Attach `Model::class` info with primary key  |
+| **icons** | array | [] | custom icons |
 
 
 События
@@ -87,3 +90,22 @@ document.addEventListener('assessment.show', function (e) {
     console.log(e.detail);
 }, false);
 ```
+---
+
+Можно поменять иконки для соответствующих вариантов, например:
+
+```php
+echo \onmotion\assessments\widget\AssessmentWidget::widget([
+            'fluent' => true,
+            'questions' => $questions,
+            'icons' => [
+                    1 => '<span class="assessment-icon"><span class="assessment-icon__angry"></span></span>',
+                    2 => '<span class="assessment-icon"><span class="assessment-icon__sad"></span></span>',
+                    3 => '<span class="assessment-icon"><span class="assessment-icon__thinking"></span></span>',
+                    4 => '<span class="assessment-icon"><span class="assessment-icon__happy"></span></span>',
+                    5 => '<span class="assessment-icon"><span class="assessment-icon__in-love"></span></span>',
+            ]
+        ]);
+```
+
+![icons](https://github.com/onmotion/yii2-page-assessments/blob/docs/docs/icons.png?raw=true)
