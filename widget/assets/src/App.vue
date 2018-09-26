@@ -16,10 +16,11 @@
                         <h3 class="title">{{currentAssessment.assessment_question}}</h3>
                         <div>
                             <transition-group name="star" class="assessment__values" tag="div">
-                                <i class="i-star" :class="{voted: currentAssessment.assessment_value >= (i + 1)}"
+                                <i class="i-star" :class="{voted: currentAssessment.assessment_value >= (i + 1), selected: currentAssessment.assessment_value === (i + 1)}"
                                    v-show="star.show" aria-hidden="true" v-for="(star, i) in stars" :key="i"
                                    @click="voteClicked(star, i)">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="svg-icon">
+                                    <span v-if="icons[(i+1)] !== undefined" v-html="icons[(i+1)]"></span>
+                                    <svg v-else xmlns="http://www.w3.org/2000/svg" class="svg-icon">
                                         <use xlink:href="#i-star"></use>
                                     </svg>
                                 </i>
@@ -95,7 +96,8 @@
                     type: null,
                     text: null,
                 },
-                visible: true
+                visible: true,
+                icons: assessments.icons || []
             }
         },
         methods: {
@@ -236,10 +238,14 @@
         display: inline-block;
         color: #c3c3c3;
         letter-spacing: 7px;
-        height: 30px;
-        max-width: 30px;
-        flex: 0 1 auto;
+        height: 35px;
+        max-width: 35px;
+        flex: 1 1 auto;
         margin-right: 7px;
+        transition: color .3s;
+        span{
+            height: inherit;
+        }
         &:last-child {
             margin-right: 0;
         }
@@ -261,13 +267,14 @@
                 fill: #ffeb3b;
             }
             cursor: pointer;
+            color: #ffeb3b;
         }
     }
 
     .assessment__values {
         display: flex;
         justify-content: center;
-        width: 177px;
+        width: 195px;
         margin: auto;
         flex-wrap: nowrap;
     }

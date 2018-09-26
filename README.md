@@ -14,7 +14,7 @@ Language: [English](README.md), [Русский](README.ru.md)
 
 *Static (embeded in a page) view:*
 
-![fluent](https://github.com/onmotion/yii2-page-assessments/blob/docs/docs/static.gif?raw=true)
+![static](https://github.com/onmotion/yii2-page-assessments/blob/docs/docs/static.gif?raw=true)
 
 Installation
 --
@@ -55,6 +55,7 @@ Then you can use the widget somewhere on the page:
 ```php
 echo \onmotion\assessments\widget\AssessmentWidget::widget([
     'fluent' => false, // static or fluent view
+   // 'timeout' => 1500 // timeout bafore appearance.
     'questions' => [
         'Is this page helpful?', // simple question
         [
@@ -74,8 +75,9 @@ Options
 | --------   | --------  | --------  | --------  |
 | **fluent**     | bool     | false    | fluent or static view  |
 | **questions**   | string \|\| array   | see example | 
+| **timeout** | integer | 1500 | timeout bafore appearance |
 | **model** _(optional)_   | ActiveRecord   | null | Attach `Model::class` info with primary key  |
-
+| **icons** | array | [] | custom icons |
 
 Events
 --
@@ -87,3 +89,23 @@ document.addEventListener('assessment.show', function (e) {
     console.log(e.detail);
 }, false);
 ```
+
+---
+
+You can change icons as you want, for example:
+
+```php
+echo \onmotion\assessments\widget\AssessmentWidget::widget([
+            'fluent' => true,
+            'questions' => $questions,
+            'icons' => [
+                    1 => '<span class="assessment-icon"><span class="assessment-icon__angry"></span></span>',
+                    2 => '<span class="assessment-icon"><span class="assessment-icon__sad"></span></span>',
+                    3 => '<span class="assessment-icon"><span class="assessment-icon__thinking"></span></span>',
+                    4 => '<span class="assessment-icon"><span class="assessment-icon__happy"></span></span>',
+                    5 => '<span class="assessment-icon"><span class="assessment-icon__in-love"></span></span>',
+            ]
+        ]);
+```
+
+![icons](https://github.com/onmotion/yii2-page-assessments/blob/docs/docs/icons.png?raw=true)

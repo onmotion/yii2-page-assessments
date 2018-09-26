@@ -29,6 +29,7 @@ class AssessmentWidget extends Widget
     ];
     public $id = 'page-assessment';
     public $timeout = 1500;
+    public $icons;
 
     public function init()
     {
@@ -126,9 +127,10 @@ class AssessmentWidget extends Widget
             'skip' => \Yii::t('assessments', 'Skip'),
         ]);
         $id = json_encode($this->getId());
+        $icons = json_encode($this->icons);
 
         echo $this->render('index', ['assessments' => $assessments, 'actions' => $actions,
-             'fluent' => $fluent, 'messages' => $messages, 'id' => $id, 'timeout' => $this->timeout]);
+             'fluent' => $fluent, 'messages' => $messages, 'id' => $id, 'timeout' => $this->timeout, 'icons' => $icons]);
     }
 
 

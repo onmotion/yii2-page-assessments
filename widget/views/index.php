@@ -12,6 +12,7 @@
 /** @var $messages string */
 /** @var $id string */
 /** @var $timeout integer */
+/** @var $icons integer */
 
 
 ?>
@@ -29,6 +30,7 @@ window.$containerId.actions = $actions;
 window.$containerId.fluent = $fluent;
 window.$containerId.messages = $messages;
 window.assessmentContainerId = $id;
+window.$containerId.icons = $icons;
 
 Vue.http.options.emulateJSON = true; // application/x-www-form-urlencoded
 
