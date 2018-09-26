@@ -2,7 +2,7 @@
   "name": "onmotion/yii2-page-assessments",
   "description": "Page assessment feature for your Yii2 application based on Vue2.",
   "type": "yii2-extension",
-  "keywords": ["yii2","extension","module","widget","vue2", "assessment", "rating"],
+  "keywords": ["yii2","extension","module","widget","vue2", "assessment", "rating", "votes", "polls"],
   "license": "MIT",
   "authors": [
     {

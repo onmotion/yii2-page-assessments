@@ -1,5 +1,5 @@
-# Yii2 page assessment/rating extension
-The page assessment module for Yii2 framework based on Vue2.
+# Yii2 page assessment/polls extension
+The page assessment (polls) module for Yii2 framework based on Vue2.
 
 Language: [English](README.md), [Русский](README.ru.md)
 
