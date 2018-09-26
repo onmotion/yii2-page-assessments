@@ -17,7 +17,7 @@
 
 ?>
 
-    <div id="<?= json_decode($id) ?>" class="page-assessment-container <?= $fluent == 'true' ? 'fluent' : '' ?>" >
+    <div id="<?= json_decode($id) ?>" class="page-assessment-container <?= $fluent == 'true' ? 'fluent' : 'static' ?>" >
         <page-assessment></page-assessment>
     </div>
 

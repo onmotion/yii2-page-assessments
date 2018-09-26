@@ -58,12 +58,11 @@
                     </div>
                     <transition name="fade"
                                 enter-active-class="fadeInUp"
-                                leave-active-class="fadeOutDown"
                                 mode="out-in"
                                 appear
                     >
                         <div class="notify-block" v-if="showNotifyBlock" style="animation-duration: 0.3s">
-                            <span :class="notification.type">{{notification.text}}</span>
+                            <div :class="notification.type" v-html="notification.text"></div>
                         </div>
                     </transition>
                 </div>
@@ -389,7 +388,7 @@
     }
 
     .notify-block {
-        span {
+        div {
             &.error {
                 color: #d84315;
             }
