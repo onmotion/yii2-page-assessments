@@ -17,24 +17,26 @@
 
 ?>
 
-    <div id="<?= json_decode($id) ?>" class="page-assessment-container <?= $fluent == 'true' ? 'fluent' : 'static' ?>" >
+    <div id="<?= json_decode($id) ?>" class="page-assessment-container <?= $fluent == 'true' ? 'fluent' : 'static' ?>">
         <page-assessment></page-assessment>
     </div>
 
 <?php
 $containerId = json_decode($id);
 $this->registerJs(<<<JS
-window.$containerId = {};
-window.$containerId.assessments = $assessments;
-window.$containerId.actions = $actions;
-window.$containerId.fluent = $fluent;
-window.$containerId.messages = $messages;
-window.assessmentContainerId = $id;
-window.$containerId.icons = $icons;
+
+
 
 Vue.http.options.emulateJSON = true; // application/x-www-form-urlencoded
 
 setTimeout(function(e) {
+    window.$containerId = {};
+    window.$containerId.assessments = $assessments;
+    window.$containerId.actions = $actions;
+    window.$containerId.fluent = $fluent;
+    window.$containerId.messages = $messages;
+    window.assessmentContainerId = $id;
+    window.$containerId.icons = $icons;
   new Vue({
   el: '#' + $id,
 });
@@ -42,5 +44,5 @@ setTimeout(function(e) {
 
 
 JS
-    );
+);
 

@@ -28,7 +28,7 @@ class m180912_132910_create_table_assessment extends Migration
             'assessment_user_ip' => $this->string(15),
             'assessment_url' => $this->string(),
             'assessment_question' => $this->string(),
-            'assessment_is_declined' => $this->boolean()->defaultValue('0'),
+            'assessment_declined_at' => $this->timestamp()->null(),
         ], $tableOptions);
 
         $this->createIndex('idx_url', '{{%assessment}}', 'assessment_url');

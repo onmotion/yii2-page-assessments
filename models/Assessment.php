@@ -9,6 +9,7 @@ namespace onmotion\assessments\models;
 
 use Yii;
 use yii\base\Model;
+use yii\db\Expression;
 use yii\helpers\ArrayHelper;
 use yii\helpers\HtmlPurifier;
 use yii\helpers\Url;
@@ -27,7 +28,7 @@ use yii\helpers\Url;
  * @property string $assessment_url
  * @property string $assessment_created_at
  * @property string $assessment_updated_at
- * @property boolean $assessment_is_declined
+ * @property boolean $assessment_declined_at
  */
 class Assessment extends \yii\db\ActiveRecord
 {
@@ -52,8 +53,7 @@ class Assessment extends \yii\db\ActiveRecord
     {
         return [
             [['assessment_url'], 'required'],
-            [['assessment_is_declined'], 'filter', 'filter' => 'boolval'],
-            [['assessment_is_declined'], 'boolean'],
+            [['assessment_declined_at'], 'validateDeclinedAt'],
             [['assessment_object_id', 'assessment_value', 'assessment_user_id'], 'integer'],
             [['assessment_created_at', 'assessment_updated_at'], 'safe'],
             [['assessment_value', 'assessment_comment'], 'default', 'value' => null],
@@ -63,6 +63,13 @@ class Assessment extends \yii\db\ActiveRecord
                 return HtmlPurifier::process($val);
             }, 'skipOnEmpty' => true],
         ];
+    }
+
+    public function validateDeclinedAt($attribute, $params)
+    {
+      if ((bool)$this->$attribute === true){
+          $this->$attribute = new Expression("NOW()");
+      }
     }
 
     /**

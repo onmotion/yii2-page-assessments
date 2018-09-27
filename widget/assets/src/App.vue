@@ -85,7 +85,6 @@
         data: function () {
             let containerId = window.assessmentContainerId;
             let assessments = window[containerId];
-
             return {
                 currentAssessmentNumber: 0,
                 assessments: assessments.assessments,
@@ -165,7 +164,7 @@
                 this.notification.text = text;
             },
             close() {
-                this.currentAssessment.assessment_is_declined = true;
+                this.currentAssessment.assessment_declined_at = true;
                 this.sendRequest();
                 this.$nextTick(function () {
                     this.currentAssessmentNumber = -1;
