@@ -24,9 +24,6 @@
 <?php
 $containerId = json_decode($id);
 $this->registerJs(<<<JS
-
-
-
 Vue.http.options.emulateJSON = true; // application/x-www-form-urlencoded
 
 setTimeout(function(e) {
