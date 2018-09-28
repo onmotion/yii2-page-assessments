@@ -44,7 +44,9 @@
                         >
                             <div class="comment-block" v-if="showCommentBlock" style="animation-duration: 0.3s">
                                 <label for="comment"></label>
-                                <textarea v-model="currentAssessment.assessment_comment" name="comment" id="comment"
+                                <textarea v-bind:value="currentAssessment.assessment_comment"
+                                          v-on:input="currentAssessment.assessment_comment = $event.target.value"
+                                          name="comment" id="comment"
                                           rows="3"
                                           :placeholder="messages.commentPrompt || ''"></textarea>
                                 <div class="buttons">
