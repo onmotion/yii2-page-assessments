@@ -16,9 +16,9 @@ class AssessmentWidgetAsset extends \yii\web\AssetBundle
         parent::init();
     }
 
-    public $publishOptions = [
-        'forceCopy' => true //dev
-    ];
+//    public $publishOptions = [
+//        'forceCopy' => true //dev
+//    ];
 
     public $js = [
         'build.js',
