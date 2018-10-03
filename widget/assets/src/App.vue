@@ -176,7 +176,7 @@
                 this.notification.text = text;
             },
             close() {
-                this.currentAssessment.assessment_declined_at = true;
+                this.currentAssessment.assessment_is_declined = true;
                 this.sendRequest();
                 this.$nextTick(function () {
                     this.currentAssessmentNumber = -1;
@@ -184,7 +184,7 @@
                 });
             },
             refuse() {
-                this.currentAssessment.assessment_declined_at = true;
+                this.currentAssessment.assessment_is_declined = true;
                 this.sendRequest();
             },
             broadcastShowEvent() {
