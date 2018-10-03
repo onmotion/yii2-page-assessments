@@ -92,24 +92,25 @@
 <script>
 
     export default {
+        props: {
+            assessmentsProp: Object
+        },
         data: function () {
-            let containerId = window.assessmentContainerId;
-            let assessments = window[containerId];
             return {
-                id: containerId,
+                id: this.assessmentsProp.id,
                 currentAssessmentNumber: 0,
-                assessments: assessments.assessments,
-                actions: assessments.actions,
+                assessments: this.assessmentsProp.assessments,
+                actions: this.assessmentsProp.actions,
                 inProgress: false,
-                isFluent: assessments.fluent || false,
-                messages: assessments.messages,
+                isFluent: this.assessmentsProp.fluent || false,
+                messages: this.assessmentsProp.messages,
                 notification: {
                     type: null,
                     text: null,
                 },
                 visible: true,
                 containerHidden: false,
-                icons: assessments.icons || []
+                icons: this.assessmentsProp.icons || []
             }
         },
         methods: {

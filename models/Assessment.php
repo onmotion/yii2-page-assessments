@@ -99,6 +99,7 @@ class Assessment extends \yii\db\ActiveRecord
     static function getAnsweredQuestionsForUser(array $questions, string $url, $userIdOrIp = null)
     {
         $userIdOrIp = $userIdOrIp ?: (\Yii::$app->getUser()->getId() ?? \Yii::$app->request->userIP);
+
         $q = self::find()
             ->select(['assessment_question'])
             ->andWhere(['assessment_question' => $questions])

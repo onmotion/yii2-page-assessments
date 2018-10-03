@@ -16,16 +16,15 @@ class AssessmentWidgetAsset extends \yii\web\AssetBundle
         parent::init();
     }
 
-//    public $publishOptions = [
-//        'forceCopy' => true //dev
-//    ];
+    public $publishOptions = [
+        'forceCopy' => YII_ENV_DEV //dev
+    ];
 
     public $js = [
         'build.js',
     ];
 
     public $depends = [
-        'yii\web\YiiAsset',
         'onmotion\vue\VueAsset',
         'onmotion\vue\VueResourceAsset',
     ];

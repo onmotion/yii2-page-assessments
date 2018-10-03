@@ -80,7 +80,11 @@ class AssessmentWidget extends Widget
 
         AssessmentWidgetAsset::register($this->getView());
 
-        $answeredQuestions = Assessment::getAnsweredQuestionsForUser(ArrayHelper::getColumn($this->questions, 'title'), (\Yii::$app->request->pathInfo ?: '/'));
+        $questionsWithoutRepeat = array_filter($this->questions, function ($item)  {
+            return !(isset($item['repeat']) && $item['repeat'] === true);
+        });
+
+        $answeredQuestions = Assessment::getAnsweredQuestionsForUser(ArrayHelper::getColumn($questionsWithoutRepeat, 'title'), (\Yii::$app->request->pathInfo ?: '/'));
 
         $this->questions = array_filter($this->questions, function ($item) use ($answeredQuestions) {
             return !in_array($item['title'], $answeredQuestions);
