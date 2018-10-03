@@ -64,6 +64,7 @@ echo \onmotion\assessments\widget\AssessmentWidget::widget([
           //  'allowComment' => true // allow optional comment
             'allowComment' => [1, 2, 3], // allow comment only if value is 1, 2 or 3.
           //  'model' => (new SomeActiveRecordModel),
+          //  'repeat' => true // whether to force repeat the question
         ]
     ]
 ]);
