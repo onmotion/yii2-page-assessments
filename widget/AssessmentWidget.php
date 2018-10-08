@@ -102,7 +102,8 @@ class AssessmentWidget extends Widget
                 'assessment_question' => $assessmentQuestion['title'],
                 'assessment_url' => \Yii::$app->request->pathInfo ?: '/',
                 'assessment_comment' => '',
-                'maxValue' => ArrayHelper::getValue($assessmentQuestion, 'maxValue', 5)
+                'maxValue' => ArrayHelper::getValue($assessmentQuestion, 'maxValue', 5),
+                'afterVoteText' => ArrayHelper::getValue($assessmentQuestion, 'afterVoteText')
             ]);
 
             $assessment->allowComment = $assessmentQuestion['allowComment'];

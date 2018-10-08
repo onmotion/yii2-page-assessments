@@ -27,5 +27,6 @@ class AssessmentWidgetAsset extends \yii\web\AssetBundle
     public $depends = [
         'onmotion\vue\VueAsset',
         'onmotion\vue\VueResourceAsset',
+        'onmotion\babelpolyfill\BabelPolyfillAsset',
     ];
 }

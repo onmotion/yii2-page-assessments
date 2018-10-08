@@ -28,7 +28,7 @@ Vue.http.options.emulateJSON = true; // application/x-www-form-urlencoded
 setTimeout(function(e) {
   new Vue({
   el: '#' + $id,
-  data() {
+  data: function() {
       return {
           props: {
               id: $id,

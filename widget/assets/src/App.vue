@@ -151,9 +151,12 @@
                     console.log(error.data);
                 });
             },
-            nextQuestion() {
+            nextQuestion: async function (e) {
                 let that = this;
                 this.inProgress = true;
+
+                await this.afterVote();
+
                 if ((this.currentAssessmentNumber + 1) === this.questionsCount) {
                     this.visible = false;
                     this.notify(this.messages.successMessage, 'success');
@@ -165,7 +168,9 @@
                     }, 2000);
                 } else {
                     setTimeout(function () {
+                        that.notification.text = null;
                         ++that.currentAssessmentNumber;
+                        that.visible = true;
                         that.inProgress = false;
                         that.broadcastShowEvent();
                     }, 400);
@@ -190,19 +195,54 @@
             },
             broadcastShowEvent() {
                 if (this.currentAssessment) {
-                    let event = new CustomEvent('assessment.show', {'detail': Object.assign({}, this.currentAssessment)});
+                    let detail = Object.assign({}, this.currentAssessment);
+                    if (typeof (Event) === 'function') {
+                        var event = new CustomEvent('assessment.show', {detail: detail});
+                    } else {
+                        var event = document.createEvent('CustomEvent');
+                        event.initCustomEvent('assessment.show', true, true, detail);
+                    }
                     document.dispatchEvent(event);
                 }
             },
             broadcastEndEvent() {
-                    let event = new CustomEvent('assessment.end', {'detail': Object.assign({}, {'id': this.id, 'static': !this.isFluent})});
-                    document.dispatchEvent(event);
+                let detail = Object.assign({}, {
+                    'id': this.id,
+                    'static': !this.isFluent
+                });
+                if (typeof (Event) === 'function') {
+                    var event = new CustomEvent('assessment.end', {detail: detail});
+                } else {
+                    var event = document.createEvent('CustomEvent');
+                    event.initCustomEvent('assessment.show', true, true, detail);
+                }
+                document.dispatchEvent(event);
             },
             afterLeave: function (el) {
                 if (this.currentAssessment === false) {
                     this.containerHidden = true;
                 }
             },
+            afterVote: function (el) {
+                let afterVoteText = this.currentAssessment.afterVoteText;
+                if (typeof afterVoteText === "string") {
+                    var message = afterVoteText;
+                } else if (typeof afterVoteText[this.currentAssessment.assessment_value] === "string"
+                    && afterVoteText[this.currentAssessment.assessment_value].length > 0) {
+                    var message = afterVoteText[this.currentAssessment.assessment_value];
+                } else {
+                    return false;
+                }
+
+                let that = this;
+                that.visible = false;
+                this.notify(message, 'success');
+                return new Promise(resolve => {
+                    setTimeout(() => {
+                        resolve(true);
+                    }, 2000);
+                });
+            }
         },
         computed: {
             questionsCount() {
@@ -379,8 +419,9 @@
     .buttons {
         text-align: right;
     }
-    .static{
-        .buttons{
+
+    .static {
+        .buttons {
             margin-top: 10px;
         }
     }
@@ -421,6 +462,7 @@
     }
 
     .notify-block {
+        min-width: 150px;
         div {
             &.error {
                 color: #d84315;

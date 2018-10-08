@@ -43,7 +43,7 @@ class Assessment extends \yii\db\ActiveRecord
 
     public function attributes()
     {
-        return array_merge(parent::attributes(), ['maxValue', 'allowComment']);
+        return array_merge(parent::attributes(), ['maxValue', 'allowComment', 'afterVoteText']);
     }
 
     /**
