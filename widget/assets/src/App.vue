@@ -214,7 +214,7 @@
                     var event = new CustomEvent('assessment.end', {detail: detail});
                 } else {
                     var event = document.createEvent('CustomEvent');
-                    event.initCustomEvent('assessment.show', true, true, detail);
+                    event.initCustomEvent('assessment.end', true, true, detail);
                 }
                 document.dispatchEvent(event);
             },

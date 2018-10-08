@@ -91,6 +91,7 @@ Events
 --
 
 **assessment.show** - when an assessment item appears.
+**assessment.end** - when an assessment item appears.
 
 ```javascript
 document.addEventListener('assessment.show', function (e) {
