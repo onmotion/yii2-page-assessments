@@ -93,6 +93,8 @@ echo \onmotion\assessments\widget\AssessmentWidget::widget([
 
 **assessment.show** - когда вопрос отобразился.
 
+**assessment.end** - когда все вопросы завершены.
+
 ```javascript
 document.addEventListener('assessment.show', function (e) {
     console.log(e.detail);
