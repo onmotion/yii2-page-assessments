@@ -19,7 +19,7 @@
                             <transition-group name="star" class="assessment__values" tag="div">
                                 <i class="i-star"
                                    :class="{voted: currentAssessment.assessment_value >= (i + 1), selected: currentAssessment.assessment_value === (i + 1)}"
-                                   v-show="star.show" aria-hidden="true" v-for="(star, i) in stars" :key="i"
+                                   v-show="star.show" aria-hidden="true" v-for="(star, i) in stars" :key="`icon-${i}`"
                                    @click="voteClicked(star, i)">
                                     <span v-if="icons[(i+1)] !== undefined" v-html="icons[(i+1)]"></span>
                                     <svg v-else xmlns="http://www.w3.org/2000/svg" class="svg-icon">

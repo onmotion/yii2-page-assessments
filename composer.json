@@ -8,12 +8,12 @@
     {
       "name": "Alexandr Kozhevnikov",
       "email": "onmotion1@gmail.com",
-      "homepage": "http://kozhevnikov.me",
+      "homepage": "https://kozhevnikov.site",
       "role": "Developer"
     }
   ],
   "require": {
-    "php": ">=5.5.0",
+    "php": ">=7.0.0",
     "yiisoft/yii2": ">=2.0.1",
     "onmotion/yii2-vuejs-assets": ">=1.0.1",
     "onmotion/yii2-babel-polyfill-assets": "*"
