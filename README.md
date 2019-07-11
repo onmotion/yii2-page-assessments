@@ -66,7 +66,7 @@ echo \onmotion\assessments\widget\AssessmentWidget::widget([
           //  'model' => (new SomeActiveRecordModel),
           //  'repeat' => true, // whether to force repeat the question
           //  'afterVoteText' => [  // show comment after got a vote (string || array)
-          //                    1 => 'It's ok! 👌',
+          //                    1 => 'It\'s ok! 👌',
           //                    2 => 'Could be better 😎',
           //                    3 => 'So so...',
           //                    4 => 'Very good!',
