@@ -40,6 +40,7 @@
     "vue-template-compiler": "^2.6.10",
     "vue-upload-component": "^2.8.20",
     "webpack": "^4.35.3",
-    "webpack-cli": "^3.3.5"
+    "webpack-cli": "^3.3.5",
+    "lodash": ">=4.17.13"
   }
 }
